@@ -1,8 +1,18 @@
-import { FeaturedProducts, Header } from '@src/components';
+import { ProductsHandler, Header } from '@src/components';
+import productActions from '@src/store/modules/products/products.actions';
+import { PageStyle } from '@src/styles';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 const Home: NextPage = ({ products }: any) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(productActions.setProducts(products));
+  }, [dispatch, products]);
+
   return (
     <>
       <Head>
@@ -11,13 +21,25 @@ const Home: NextPage = ({ products }: any) => {
       </Head>
       <Header />
       <main>
-        <FeaturedProducts />
+        <PageStyle.Container>
+          <ProductsHandler />
+        </PageStyle.Container>
       </main>
-      <footer>
-        <p>Todos os direitos reservados.</p>
-      </footer>
     </>
   );
 };
+
+export async function getStaticProps() {
+  const response = await fetch('https://dummyjson.com/products?limit=20');
+  const data = await response.json();
+
+  const { products } = data;
+
+  return {
+    props: {
+      products
+    }
+  };
+}
 
 export default Home;

@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-      background-color: ${theme.colors.white};
+      background-color: ${theme.colors.light};
       height: 100%;
     }
 
@@ -24,6 +24,11 @@ const GlobalStyle = createGlobalStyle`
     a {
       color: ${theme.colors.gray}
     }
+
+    ul {
+      list-style: none;
+    }
+
   `}
 `;
 
