@@ -1,8 +1,8 @@
-import { CartHandler, Header, PaymentHandler } from '@src/components';
+import { CheckoutHandler, Header } from '@src/components';
 import Head from 'next/head';
 import { PageStyle } from '@src/styles';
 
-const ProductPage = () => {
+const CheckoutPage = () => {
   return (
     <>
       <Head>
@@ -12,12 +12,11 @@ const ProductPage = () => {
       <Header />
       <main>
         <PageStyle.Container>
-          <CartHandler />
-          <PaymentHandler />
+          <CheckoutHandler />
         </PageStyle.Container>
       </main>
     </>
   );
 };
 
-export default ProductPage;
+export default CheckoutPage;

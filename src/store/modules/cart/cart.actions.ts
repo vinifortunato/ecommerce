@@ -19,9 +19,16 @@ const removeProduct = (product: Product) => {
   };
 };
 
+const clear = () => {
+  return {
+    type: CartActionTypes.CLEAR_CART,
+  };
+};
+
 const productActions = {
   addProduct,
-  removeProduct
+  removeProduct,
+  clear
 };
 
 export default productActions;
